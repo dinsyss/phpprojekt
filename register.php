@@ -17,6 +17,8 @@
       else{
          $sql = "INSERT INTO klient(imie,nazwisko,login,haslo,email,numer,typ) VALUES ('$imie','$nazwisko','$user','$pass','$email','$tel','0')";
         if (mysqli_query($con, $sql)) {
+          $date = date('Y-m-d H:i:s');
+          mysqli_query($con,"INSERT INTO log VALUES('','$user','$date','zarejestrowal sie')");
             echo '<script type="text/javascript">
                   window.location = "login.html";
                   </script>';

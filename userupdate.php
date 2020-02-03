@@ -14,12 +14,14 @@
     $email = $_GET["email"];
     $numer = $_GET["numer"];
     $con = mysqli_connect("localhost", "root", "", "projekcik");
+    $date = date('Y-m-d H:i:s');
     if($con === false){
         die("ERROR: Could not connect. " . mysqli_connect_error());
     }
     mysqli_query($con,'SET NAMES \'utf8\'');
       $query = "UPDATE klient SET imie=\"$imie\", nazwisko=\"$nazwisko\", haslo=\"$password\", email=\"$email\", numer=\"$numer\" WHERE login=\"$login\"";
       mysqli_query($con,$query) or die (mysqli_error($con));
+      mysqli_query($con,"INSERT INTO log VALUES('','$login','$date','zmienil swoje dane')");
       echo '<script type="text/javascript">
             alert("Zmieniono poprawnie");
             window.location = "main.php";

@@ -10,6 +10,8 @@ if(isSet($_POST['username'])&&isSet($_POST['password'])){
     {
       session_start();
       setcookie('zalogowanyuser', $user, time() + (3600), "/");
+      $date = date('Y-m-d H:i:s');
+      mysqli_query($con,"INSERT INTO log VALUES('','$user','$date','zalogowal sie')");
       if($queryresult[7]=="1"){
         setcookie('typkonta', "admin", time() + (3600), "/");
       }

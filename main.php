@@ -47,6 +47,9 @@
               <button onclick='window.location.href="add.php"' type="button" id="asdf" class="btn btn-primary btn-lg btn-block" hidden="hidden">Dodaj nowy samochód</button>
           </div>
           <div class="form-group">
+              <button onclick='window.location.href="wykres.php"' type="button" class="btn btn-primary btn-lg btn-block">Statystyki</button>
+          </div>
+          <div class="form-group">
               <button onclick='window.location.href="logout.php"' type="button" class="btn btn-primary btn-lg btn-block">Wyloguj</button>
           </div>
        </form>

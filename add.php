@@ -15,6 +15,8 @@
       $rok_prod = $_POST["rok_prod"];
       $przebieg = $_POST["przebieg"];
       $cena = $_POST["cena"];
+      $c=$_COOKIE['zalogowanyuser'];
+      $date = date('Y-m-d H:i:s');
       $link = mysqli_connect("localhost", "root", "", "projekcik");
       if($link === false){
           die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -23,6 +25,7 @@
       $sql = "INSERT INTO $tabela VALUES ('','$marka','$model', '$kraj_prod', '$rok_prod', '$przebieg','$cena')";
       if(mysqli_query($link, $sql)){
           echo '<script>function onl(){document.getElementById("REEE").innerHTML = "Samochód '. $model .' dodany poprawnie!";} </script>';
+          mysqli_query($link,"INSERT INTO log VALUES('','$c','$date','dodal samochod')");
       } else{
           echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
       }
